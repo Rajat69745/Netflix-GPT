@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from './Navbar'
-import { checkValidData } from '../utils/validate'
+import { checkValidDataSignIn ,checkValidDataSignUp } from '../utils/validate'
 const backGroundImage = 'https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg'
 const Login = () => {
 const [isSignInForm,setIsSignInForm]= React.useState(true)
@@ -18,7 +18,7 @@ const userName= React.useRef(null)
 e.preventDefault()
 
 
-    const errorResponse=checkValidData(email.current.value,password.current.value, userName.current.value)
+    const errorResponse= isSignInForm?  checkValidDataSignIn(email.current.value,password.current.value):checkValidDataSignUp(email.current.value,password.current.value, userName.current.value)
 setError(errorResponse)
      
 
